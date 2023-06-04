@@ -19,6 +19,93 @@ Size: 101 MB
 File Type: CSV
 
 
+# Docker images
+
+# Project Docker Images
+
+This project consists of four Docker images: `mysql`, `machine_learning_image`, `spark_preprocessing_image`, and `hadoop_image`. This README file provides instructions on how to access and use these Docker images for the project. Follow the steps below to get started:
+
+### Prerequisites
+
+- Docker must be installed on your machine. You can download Docker from the official website: [https://www.docker.com/get-started](https://www.docker.com/get-started)
+
+### Accessing the Docker Images
+
+1. Open a terminal or command prompt.
+
+2. Pull the Docker images from Docker Hub using the `docker pull` command. Run the following commands for each image:
+
+   ```shell
+   docker pull fredmutisya/mysql
+   docker pull fredmutisya/machine_learning_image
+   docker pull fredmutisya/spark_preprocessing_image
+   docker pull rancher/hadoop-base
+   ```
+
+3. Once the images are downloaded, you can verify their presence by running `docker images`. You should see the four images listed: `mysql`, `machine_learning_image`, `spark_preprocessing_image`, and `hadoop_image`.
+
+### Running the Docker Containers
+
+Now that you have pulled the Docker images, you can run the corresponding Docker containers for each image. Follow the steps below:
+
+#### MySQL Container
+
+1. Run the MySQL container using the following command:
+
+   ```shell
+   docker run -d --name mysql_container -p 3306:3306 -e MYSQL_ROOT_PASSWORD=<password> fredmutisya/mysql
+   ```
+
+   Replace `<password>` with your desired password for the MySQL root user.
+
+2. Wait for the container to start. You can check the logs using `docker logs mysql_container` to verify that the MySQL server is running.
+
+#### Machine Learning Container
+
+1. Run the machine learning container using the following command:
+
+   ```shell
+   docker run -d --name ml_container --link mysql_container -p 5000:5000 fredmutisya/machine_learning_image
+   ```
+
+   The `--link` flag is used to connect the machine learning container to the MySQL container.
+
+2. Wait for the container to start. You can check the logs using `docker logs ml_container` to verify that the machine learning server is running.
+
+#### Spark Preprocessing Container
+
+1. Run the Spark preprocessing container using the following command:
+
+   ```shell
+   docker run -d --name spark_container -p 8888:8888 fredmutisya/spark_preprocessing_image
+   ```
+
+2. Wait for the container to start. You can check the logs using `docker logs spark_container` to verify that the Spark preprocessing environment is running.
+
+#### Hadoop Container
+
+1. Run the Hadoop container using the following command:
+
+   ```shell
+   docker run -d --name hadoop_container fredmutisya/hadoop_image
+   ```
+
+2. Wait for the container to start. You can check the logs using `docker logs hadoop_container` to verify that the Hadoop services are running.
+
+### Accessing the Services
+
+Now that the Docker containers are running, you can access the services provided by each container:
+
+- **MySQL:** You can connect to the MySQL database by using the host `localhost`, port `3306`, and the credentials you set when running the MySQL container.
+
+- **Machine Learning:** Access the machine learning service by using the URL `http://localhost:5000` in your web browser.
+
+- **Spark Preprocessing:** Access the Spark preprocessing environment by using the URL `http://localhost:8888` in your web browser.
+
+- **Hadoop:** The Hadoop services are now available within the `hadoop_container`. 
+
+## For the management of the hadoop distributed file system, hive and apache spark, Apache Ambari can be used to manage the system.
+
 # Batch processing pipeline 
 
 The batch processing pipeline involves multiple steps to process ecommerce data, store it in a MySQL database, transfer it to HDFS using Sqoop, convert it back to MySQL format, preprocess it using Apache Spark and PySpark, and perform machine learning tasks using Spark MLlib and scikit-learn. Here are the different steps in the pipeline:
