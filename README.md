@@ -46,7 +46,7 @@ Exporting to CSV: The Pandas DataFrame is written to a CSV file named 'ml_output
 
 
 
-6. **Machine Learning with Spark MLlib and scikitlearn**: Spark MLlib was utilized to perform machine learning tasks on the preprocessed data. Poisson regression and logistic regression were applied on the count of transactions per item ID as the outcome variable. This allowed for analysis and prediction based on the transaction patterns and other features of the ecommerce data.
+6. **Machine Learning with Spark MLlib and scikitlearn**: Spark MLlib & scikitlean were utilized to perform feature selection and initial machine learning tasks on the preprocessed data. 
 
 Importing Dependencies: The required libraries, such as pandas, sklearn, xgboost, and matplotlib.pyplot, are imported.
 Copying the DataFrame: The pandas DataFrame pandas_df obtained from Spark preprocessing is copied to df_ecommerce.
