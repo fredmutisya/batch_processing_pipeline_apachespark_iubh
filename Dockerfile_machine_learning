@@ -1,0 +1,15 @@
+FROM python:3.9
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install the required Python packages
+RUN pip install --no-cache-dir pyspark numpy pandas matplotlib scikit-learn xgboost
+
+# Copy the necessary files into the container
+COPY spark_preprocessing.py /app/spark_preprocessing.py
+COPY machine_learning.py /app/machine_learning.py
+
+# Run the Python script
+CMD ["python", "machine_learning.py"]
+

@@ -1,0 +1,7 @@
+version: '3'
+services:
+  machine_learning:
+    build:
+      context: .
+      dockerfile: Dockerfile_machine_learning
+    image: machine_learning_image

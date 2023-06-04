@@ -1,0 +1,12 @@
+# Dockerfile_mysql
+FROM mysql:latest
+
+LABEL maintainer="fredmutisya@gmail.com"
+
+# Copy SQL script
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Set environment variables
+ENV MYSQL_DATABASE=mydatabase
+ENV MYSQL_ROOT_PASSWORD=password
+

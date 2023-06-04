@@ -1,0 +1,8 @@
+version: '3'
+services:
+  spark-preprocessing:
+    build:
+      context: .
+      dockerfile: Dockerfile_spark_preprocessing
+    image: spark_preprocessing_image
+  

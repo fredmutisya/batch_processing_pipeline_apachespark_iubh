@@ -1,0 +1,16 @@
+# Dockerfile_spark_preprocessing
+FROM python:3.8-slim-buster
+
+LABEL maintainer="fredmutisya@gmail.com"
+
+RUN apt-get update && apt-get install -y \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip3 install pyspark numpy pandas
+
+
+WORKDIR /app
+
+COPY spark_preprocessing.py .
+
+CMD ["python3", "spark_preprocessing.py"]

@@ -1,0 +1,31 @@
+version: '3'
+services:
+  hadoop:
+    build:
+      context: ./hadoop
+      dockerfile: Dockerfile_hadoop
+    image: my_hadoop
+    ports:
+      - "50070:50070"
+      - "8088:8088"
+
+  mysql:
+    build:
+      context: ./hadoop
+      dockerfile: Dockerfile_mysql
+    image: my_mysql
+    environment:
+      MYSQL_DATABASE: mydatabase
+      MYSQL_ROOT_PASSWORD: password
+
+  spark_preprocessing:
+    build:
+      context: ./hadoop
+      dockerfile: Dockerfile_spark_preprocessing
+    image: my_spark_preprocessing
+
+  machine_learning:
+    build:
+      context: ./hadoop
+      dockerfile: Dockerfile_machine_learning
+    image: my_machine_learning
