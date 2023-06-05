@@ -36,10 +36,11 @@ This project consists of four Docker images: `mysql`, `machine_learning_image`, 
 2. Pull the Docker images from Docker Hub using the `docker pull` command. Run the following commands for each image:
 
    ```shell
-   docker pull fredmutisya/mysql
-   docker pull fredmutisya/machine_learning_image
-   docker pull fredmutisya/spark_preprocessing_image
    docker pull rancher/hadoop-base
+   docker pull fredmutisya/mysql
+   docker pull fredmutisya/spark_preprocessing_image
+   docker pull fredmutisya/machine_learning_image
+   docker pull tensorflow/tensorflow
    ```
 
 3. Once the images are downloaded, you can verify their presence by running `docker images`. You should see the four images listed: `mysql`, `machine_learning_image`, `spark_preprocessing_image`, and `hadoop_image`.
@@ -104,7 +105,7 @@ Now that the Docker containers are running, you can access the services provided
 
 - **Hadoop:** The Hadoop services are now available within the `hadoop_container`. 
 
-For the management of the hadoop distributed file system, hive and apache spark, Apache Ambari can be used to manage the system.
+For the management of the hadoop distributed file system, hive and apache spark, Apache Ambari can be used to manage the system. For deep learning Tensorflow and Keras can be utilized.
 
 # Batch processing pipeline 
 
@@ -120,34 +121,22 @@ The batch processing pipeline involves multiple steps to process ecommerce data,
 
 5. **Preprocessing with Apache Spark and PySpark**: Apache Spark and PySpark are used to preprocess the data. This is is implemented in the file spark_preprocessing.pyin the following steps:
 
-Importing Dependencies: The required libraries, such as pyspark, pandas, and specific modules from pyspark.sql, are imported.
-Initializing Spark Session: The code initializes a Spark session with the application name 'eCommerce' and specific configuration settings.
-Defining Schema: The expected schema for the eCommerce dataset is defined using the StructType and StructField classes.
-Loading the Dataset: The code loads the eCommerce dataset from a CSV file, applying the defined schema to the DataFrame.
-Data Type Transformation: The code converts specific columns to their proper data types using the withColumn and cast functions.
-Date Transformation: The 'created_at', 'Working Date', and 'Customer Since' columns are transformed from strings to the DateType using the to_date function.
-Additional Data Transformation: The 'created_at' column is split into 'year', 'month', and 'day' columns using Spark SQL functions.
-Filtering Invalid Rows: Rows with 'Year' values outside the range of 1900-2100 are filtered out using the filter function.
-Converting to Pandas DataFrame: The Spark DataFrame is converted to a Pandas DataFrame for further processing or analysis.
-Exporting to CSV: The Pandas DataFrame is written to a CSV file named 'ml_output.csv' with headers, no index, and overwrite mode.
-
+First, it imports the required dependencies, including pyspark and pandas. Then, a Spark session is initialized with specific configuration settings. The code defines the expected schema for the dataset using the StructType and StructField classes. Next, it loads the eCommerce dataset from a CSV file, applying the defined schema to create a DataFrame. Data type transformations are applied to specific columns using the withColumn and cast functions. Date columns ('created_at', 'Working Date', and 'Customer Since') are transformed from strings to the DateType using the to_date function. Additional transformations split the 'created_at' column into 'year', 'month', and 'day' columns using Spark SQL functions. Invalid rows with 'Year' values outside the range of 1900-2100 are filtered out. The Spark DataFrame is then converted to a Pandas DataFrame for further processing or analysis. Finally, the resulting Pandas DataFrame is exported to a CSV file named 'ml_output.csv' in overwrite mode, including headers and without an index.
 
 
 6. **Machine Learning with Spark MLlib and scikitlearn**: Spark MLlib & scikitlean were utilized to perform feature selection and initial machine learning tasks on the preprocessed data. 
 
-Importing Dependencies: The required libraries, such as pandas, sklearn, xgboost, and matplotlib.pyplot, are imported.
-Copying the DataFrame: The pandas DataFrame pandas_df obtained from Spark preprocessing is copied to df_ecommerce.
-Removing Columns with Missing Values: Columns with more than 50% missing values are removed from the DataFrame using the dropna function.
-Dropping Rows with Missing Values: Rows with any remaining missing values are dropped from the DataFrame.
-Filtering Columns: A subset of columns to be used in the classification task is selected and stored in column_list.
-Label Encoding: The categorical feature "sku" is encoded using LabelEncoder from sklearn.preprocessing, and the encoded values are stored in a new column called "sku_encoded".
-Subset the DataFrame: The DataFrame is further subsetted to include only the columns specified in column_list.
-One-Hot Encoding: The categorical variables "category_name_1" and "payment_method" are one-hot encoded using pd.get_dummies.
-Splitting the Data: The DataFrame is split into features (X) and the target variable (y). The data is further split into training and testing sets using train_test_split from sklearn.model_selection.
-Decision Tree Classifier: A decision tree classifier is initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the model is calculated using accuracy_score from sklearn.metrics.
-Plotting the Decision Tree: A decision tree classifier is initialized with a maximum depth of 3, fitted to the training data, and plotted using plot_tree from sklearn.tree and matplotlib.pyplot.
-Random Forest Classifier: A random forest classifier is initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the model is calculated using accuracy_score.
-XGBoost Classifier: An XGBoost classifier is initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the model is calculated using accuracy_score.
+As a demonstration of the pipeline capabilities, only basic machine learning tasks are showcased. 
+Firstly, the necessary dependencies are imported, including pandas, sklearn, xgboost, and matplotlib.pyplot. The pandas DataFrame obtained from Spark preprocessing is copied to a new DataFrame named df_ecommerce. Columns with a significant number of missing values are removed using the dropna function, followed by the removal of rows with any remaining missing values from the DataFrame.
+Next, a subset of columns is selected for the classification task and stored in the column_list variable. The categorical feature "sku" is label encoded using the LabelEncoder from the sklearn.preprocessing module, and the encoded values are added as a new column named "sku_encoded" to the DataFrame.
+
+The DataFrame is further subsetted to include only the columns specified in column_list. Categorical variables "category_name_1" and "payment_method" are one-hot encoded using the pd.get_dummies function, expanding them into multiple binary columns. The data is split into features (X) and the target variable (y). The dataset is then divided into training and testing sets using the train_test_split function from sklearn.model_selection.
+
+A decision tree classifier is initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the decision tree model is calculated using the accuracy_score function from sklearn.metrics. Additionally, a decision tree classifier with a maximum depth of 3 is initialized, fitted to the training data, and plotted using the plot_tree function from sklearn.tree and matplotlib.pyplot. A random forest classifier is also initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the random forest model is calculated using accuracy_score. Furthermore, an XGBoost classifier is initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the XGBoost model is calculated using accuracy_score.
+
+The preprocessing has a csv output which can be fed into a deep learning module using the tensorflow image which has intergrated Keras.
+
+
 
 
 
