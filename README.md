@@ -18,6 +18,11 @@ Size: 101 MB
 
 File Type: CSV
 
+# General structure
+
+![Image](./Batch data processing pipeline.png)
+
+
 
 # Docker images
 
