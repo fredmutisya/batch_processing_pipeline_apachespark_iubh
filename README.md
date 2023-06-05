@@ -20,7 +20,7 @@ File Type: CSV
 
 # General structure
 
-![Image](./Batch data processing pipeline.png)
+![Image](./home/fred/Hadoop/Batch data processing pipeline.png)
 
 
 
