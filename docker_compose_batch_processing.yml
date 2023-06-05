@@ -29,3 +29,6 @@ services:
       context: ./hadoop
       dockerfile: Dockerfile_machine_learning
     image: my_machine_learning
+  
+  tensorflow:
+    image: tensorflow/tensorflow:3
