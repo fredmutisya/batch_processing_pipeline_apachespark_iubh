@@ -31,19 +31,27 @@ This project consists of four Docker images: `mysql`, `machine_learning_image`, 
 
 ### Accessing the Docker Images
 
+#### Accessing the Docker images using  Docker compose
+
+This can be done by running the docker_compose_batch_processing.yml file to run all images in their defined sequence or use the individual docker compose yml files for each image
+
+#### Accessing the Docker images from the online repository- Dockerhub
+I created 3 docker images and uploaded them on Docker hub under fredmutisya while i provided the images for hadoop and tensorflow from trusted repositories on dockerhub. The instructions for running the images are as follows:
+
 1. Open a terminal or command prompt.
 
 2. Pull the Docker images from Docker Hub using the `docker pull` command. Run the following commands for each image:
 
    ```shell
    docker pull rancher/hadoop-base
+   docker pull hortonworks/ambari-server
    docker pull fredmutisya/mysql
    docker pull fredmutisya/spark_preprocessing_image
    docker pull fredmutisya/machine_learning_image
    docker pull tensorflow/tensorflow
    ```
 
-3. Once the images are downloaded, you can verify their presence by running `docker images`. You should see the four images listed: `mysql`, `machine_learning_image`, `spark_preprocessing_image`, and `hadoop_image`.
+3. Once the images are downloaded, you can verify their presence by running `docker images` or `docker image ls`. You should see the four images listed: `mysql`, `machine_learning_image`, `spark_preprocessing_image`, and `hadoop_image`.
 
 ### Running the Docker Containers
 
@@ -60,6 +68,16 @@ Now that you have pulled the Docker images, you can run the corresponding Docker
    Replace `<password>` with your desired password for the MySQL root user.
 
 2. Wait for the container to start. You can check the logs using `docker logs mysql_container` to verify that the MySQL server is running.
+
+#### Hadoop Container
+
+1. Run the Hadoop container using the following command:
+
+   ```shell
+   docker run -d --name hadoop_container fredmutisya/hadoop_image
+   ```
+
+2. Wait for the container to start. You can check the logs using `docker logs hadoop_container` to verify that the Hadoop services are running.
 
 #### Machine Learning Container
 
@@ -83,27 +101,22 @@ Now that you have pulled the Docker images, you can run the corresponding Docker
 
 2. Wait for the container to start. You can check the logs using `docker logs spark_container` to verify that the Spark preprocessing environment is running.
 
-#### Hadoop Container
 
-1. Run the Hadoop container using the following command:
-
-   ```shell
-   docker run -d --name hadoop_container fredmutisya/hadoop_image
-   ```
-
-2. Wait for the container to start. You can check the logs using `docker logs hadoop_container` to verify that the Hadoop services are running.
 
 ### Accessing the Services
 
 Now that the Docker containers are running, you can access the services provided by each container:
 
-- **MySQL:** You can connect to the MySQL database by using the host `localhost`, port `3306`, and the credentials you set when running the MySQL container.
+- **Hadoop:** The Hadoop services are available within the `hadoop_container`. 
 
-- **Machine Learning:** Access the machine learning service 
+- **MySQL:** You can connect to the MySQL database by using the host `localhost`, port `3306`, and the credentials you set when running the MySQL container.
 
 - **Spark Preprocessing:** Access the Spark preprocessing environment 
 
-- **Hadoop:** The Hadoop services are now available within the `hadoop_container`. 
+- **Machine Learning:** Access the machine learning service 
+
+- **Tensorflow:** Access Tensorflow and Keras
+
 
 For the management of the hadoop distributed file system, hive and apache spark, Apache Ambari can be used to manage the system. For deep learning Tensorflow and Keras can be utilized.
 
@@ -135,6 +148,8 @@ The DataFrame is further subsetted to include only the columns specified in colu
 A decision tree classifier is initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the decision tree model is calculated using the accuracy_score function from sklearn.metrics. Additionally, a decision tree classifier with a maximum depth of 3 is initialized, fitted to the training data, and plotted using the plot_tree function from sklearn.tree and matplotlib.pyplot. A random forest classifier is also initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the random forest model is calculated using accuracy_score. Furthermore, an XGBoost classifier is initialized, trained on the training data, and used to make predictions on the testing data. The accuracy of the XGBoost model is calculated using accuracy_score.
 
 The preprocessing has a csv output which can be fed into a deep learning module using the tensorflow image which has intergrated Keras.
+
+For managing the HDFS system it is recommend
 
 
 
