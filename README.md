@@ -10,7 +10,7 @@ Time period: 03/2016 – 08/2018
 
 Source: https://www.kaggle.com/datasets/ertizaabbas/pakistan-ecommerce-dataset
 
-Dataset: The dataset contains detailed information of e-commerce orders in Pakistan from March 2016 to August 2018. It contains item details, shipping method, payment method like credit card, Easy-Paisa, Jazz-Cash, cash-on-delivery, product categories like fashion, mobile, electronics, appliance etc., date of order, SKU, price, quantity, total and customer ID. 
+Dataset: The dataset contains detailed information of e-commerce orders in Pakistan from March 2016 to August 2018. The file was editied by doubling the 500,000 original values to cross the 1,000,000 minimum threshold of the assignment and the date column was used to add a timestamp based on 1970 epoch. The dataset contains item details, shipping method, payment method like credit card, Easy-Paisa, Jazz-Cash, cash-on-delivery, product categories like fashion, mobile, electronics, appliance etc., date of order, SKU, price, quantity, total and customer ID. 
 
 Size: 101 MB
 
