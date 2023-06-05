@@ -28,11 +28,11 @@ File Type: CSV
 
 # Project Docker Images
 
-This project consists of four Docker images: `mysql`, `machine_learning_image`, `spark_preprocessing_image`, and `hadoop_image`. This README file provides instructions on how to access and use these Docker images for the project. Follow the steps below to get started:
+This project consists of six Docker images for hadoop, ambari, mysql,tensorflow and custom built images named spark_preprocessing_image and machine_learning_image. This README file provides instructions on how to access and use these Docker images for the project. Follow the steps below to get started:
 
 ### Prerequisites
 
-- Docker must be installed on your machine. You can download Docker from the official website: [https://www.docker.com/get-started](https://www.docker.com/get-started)
+- Docker must be installed on your machine. You can download Docker from the official website: [https://www.docker.com/get-started](https://www.docker.com/get-started). Docker compose is also required.
 
 ### Accessing the Docker Images
 
