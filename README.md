@@ -98,13 +98,13 @@ Now that the Docker containers are running, you can access the services provided
 
 - **MySQL:** You can connect to the MySQL database by using the host `localhost`, port `3306`, and the credentials you set when running the MySQL container.
 
-- **Machine Learning:** Access the machine learning service by using the URL `http://localhost:5000` in your web browser.
+- **Machine Learning:** Access the machine learning service 
 
-- **Spark Preprocessing:** Access the Spark preprocessing environment by using the URL `http://localhost:8888` in your web browser.
+- **Spark Preprocessing:** Access the Spark preprocessing environment 
 
 - **Hadoop:** The Hadoop services are now available within the `hadoop_container`. 
 
-## For the management of the hadoop distributed file system, hive and apache spark, Apache Ambari can be used to manage the system.
+For the management of the hadoop distributed file system, hive and apache spark, Apache Ambari can be used to manage the system.
 
 # Batch processing pipeline 
 
