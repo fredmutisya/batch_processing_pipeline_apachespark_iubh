@@ -20,7 +20,7 @@ File Type: CSV
 
 # General structure
 
-![Image](./Batch data processing pipeline.png)
+![Image](Batch data processing pipeline.png)
 
 
 # Docker images
