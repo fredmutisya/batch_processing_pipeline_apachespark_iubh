@@ -110,7 +110,7 @@ A decision tree classifier is initialized, trained on the training data, and use
 
 The preprocessing has a csv output which can be fed into a deep learning module using the tensorflow image which has intergrated Keras.
 
-For managing the HDFS system it is recommend
+For managing the HDFS system in practice, it is recommend to use Hortonworks/Cloudera which has Apache Ambari, Sqoop, Apache spark, HIVE and HDFS in the same installation
 
 
 
