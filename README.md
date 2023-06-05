@@ -10,9 +10,7 @@ Time period: 03/2016 – 08/2018
 
 Source: https://www.kaggle.com/datasets/ertizaabbas/pakistan-ecommerce-dataset
 
-Dataset: The dataset contains detailed information of half a million e-commerce orders in Pakistan from March 2016 to August 2018. It contains item details, shipping method, payment method like credit card, Easy-Paisa, Jazz-Cash, cash-on-delivery, product categories like fashion, mobile, electronics, appliance etc., date of order, SKU, price, quantity, total and customer ID. This is the most detailed dataset about e-commerce in Pakistan that you can find in the Public domain.
-
-Variables: The dataset contains Item ID, Order Status (Completed, Cancelled, Refund), Date of Order, SKU, Price, Quantity, Grand Total, Category, Payment Method and Customer ID.
+Dataset: The dataset contains detailed information of e-commerce orders in Pakistan from March 2016 to August 2018. It contains item details, shipping method, payment method like credit card, Easy-Paisa, Jazz-Cash, cash-on-delivery, product categories like fashion, mobile, electronics, appliance etc., date of order, SKU, price, quantity, total and customer ID. 
 
 Size: 101 MB
 
@@ -28,7 +26,7 @@ File Type: CSV
 
 # Project Docker Images
 
-This project consists of six Docker images for hadoop, ambari, mysql,tensorflow and custom built images named spark_preprocessing_image and machine_learning_image. This README file provides instructions on how to access and use these Docker images for the project. Follow the steps below to get started:
+This project consists of six Docker images for hadoop, ambari, mysql,tensorflow and custom built images named spark_preprocessing_image and machine_learning_image. Follow the steps below to get started:
 
 ### Prerequisites
 
@@ -36,11 +34,11 @@ This project consists of six Docker images for hadoop, ambari, mysql,tensorflow 
 
 ### Accessing the Docker Images
 
-#### Accessing the Docker images using  Docker compose
+### Accessing the Docker images using  Docker compose
 
 This can be done by running the docker_compose_batch_processing.yml file to run all images in their defined sequence or use the individual docker compose yml files for each image
 
-#### Accessing the Docker images from the online repository- Dockerhub
+### Accessing the Docker images from the online repository- Dockerhub
 I created 3 docker images and uploaded them on Docker hub under fredmutisya while i provided the images for hadoop and tensorflow from trusted repositories on dockerhub. The instructions for running the images are as follows:
 
 1. Open a terminal or command prompt.
