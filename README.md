@@ -20,7 +20,8 @@ File Type: CSV
 
 # General structure
 
-![Image](Batch data processing pipeline.png)
+![Batch data processing pipeline](https://github.com/fredmutisya/batch_processing_pipeline_apachespark_iubh/assets/76942756/554bab6b-d8bc-46fd-82e8-c87311e58ed2)
+
 
 
 # Docker images
